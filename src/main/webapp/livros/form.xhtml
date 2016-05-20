@@ -1,0 +1,23 @@
+<html xmlns:h="http://java.sun.com/jsf/html">
+ <h:body>
+  <h:form>
+   <div>
+    <h:outputLabel>Title</h:outputLabel>
+    <h:inputText value="#{adminBooksBean.product.title}"/>
+   </div>
+   <div>
+    <h:outputLabel>Description</h:outputLabel>
+    <h:inputTextarea cols="20" rows="10" value="#{adminBooksBean.product.description}"/>
+   </div>
+   <div>
+    <h:outputLabel>Number of pages</h:outputLabel>
+    <h:inputText value="#{adminBooksBean.product.numberOfPages}"/>
+   </div>
+   <div>
+    <h:outputLabel>Price</h:outputLabel>
+    <h:inputText value="#{adminBooksBean.product.price}"/>
+   </div>
+   <h:commandButton value="Save" action="#{adminBooksBean.save}"/>
+  </h:form>
+ </h:body>
+</html>
