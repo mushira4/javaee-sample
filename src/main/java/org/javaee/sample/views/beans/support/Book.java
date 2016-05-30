@@ -1,10 +1,9 @@
 package org.javaee.sample.views.beans.support;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author mushira4
@@ -13,7 +12,7 @@ import java.math.BigDecimal;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     private String title;
@@ -23,6 +22,9 @@ public class Book {
     private int numberOfPages;
 
     private BigDecimal price;
+
+    @ManyToMany
+    private List<Author> authors;
 
     public String getTitle() {
         return title;
@@ -56,6 +58,20 @@ public class Book {
         this.price = price;
     }
 
+    public List<Author> getAuthors() {
+        populateAuthors();
+        return authors;
+    }
+
+    public void add(Author author){
+        populateAuthors();
+        this.authors.add(author);
+    }
+
+    private void populateAuthors() {
+        if(authors == null) authors = new ArrayList<>();
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -65,4 +81,5 @@ public class Book {
                 ", price=" + price +
                 '}';
     }
+
 }
