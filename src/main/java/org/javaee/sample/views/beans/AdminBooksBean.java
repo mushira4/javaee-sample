@@ -5,6 +5,8 @@ import org.javaee.sample.model.daos.BookDAO;
 import org.javaee.sample.views.FacesMessageHelper;
 import org.javaee.sample.views.beans.support.Author;
 import org.javaee.sample.views.beans.support.Book;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -20,6 +22,8 @@ import java.util.List;
  */
 @Model
 public class AdminBooksBean {
+
+    private Logger logger = LoggerFactory.getLogger(AdminBooksBean.class);
 
     @Inject
     private FacesMessageHelper messageHelper;
@@ -59,8 +63,13 @@ public class AdminBooksBean {
 
     @Transactional
     public String save(){
+        logger.info("[BOOK] M=save, msg='Saving book.'");
+
         populateBookAuthor();
         bookDAO.save(product);
+
+        logger.info("[BOOK] M=save, msg='Book saved.'");
+
         messageHelper.addMesage("Book Saved.");
         cleanObjects();
         return "/books/list?faces-redirect=true";

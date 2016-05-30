@@ -2,6 +2,8 @@ package org.javaee.sample.views.beans;
 
 import org.javaee.sample.model.daos.BookDAO;
 import org.javaee.sample.views.beans.support.Book;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -15,6 +17,8 @@ import java.util.List;
  */
 @Model
 public class AdminListBooksBean {
+
+    private Logger logger = LoggerFactory.getLogger(AdminListBooksBean.class);
 
     @Inject
     private BookDAO bookDAO;

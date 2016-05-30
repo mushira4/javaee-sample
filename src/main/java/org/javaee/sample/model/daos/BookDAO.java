@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContextType;
 import java.util.List;
 
 /**
+ * DAO for books.
+ *
  * @author mushira4
  */
 public class BookDAO {

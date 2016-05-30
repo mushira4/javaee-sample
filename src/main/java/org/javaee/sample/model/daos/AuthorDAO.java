@@ -7,6 +7,8 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
+ * DAO for Authors.
+ *
  * @author mushira4
  */
 public class AuthorDAO {
